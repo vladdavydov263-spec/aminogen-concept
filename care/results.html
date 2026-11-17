@@ -165,6 +165,36 @@
         учасників. Середні значення по групі не передбачають результату окремої людини.
       </p>
 
+      <div class="calc">
+        <h3>Порахуйте, що це означає для вас</h3>
+        <p class="calc-sub">Введіть свою вагу — покажемо, як виглядає середній результат із досліджень у кілограмах.</p>
+        <div class="calc-row">
+          <div class="calc-field">
+            <label for="calc-weight">Вага, кг</label>
+            <input id="calc-weight" type="number" min="40" max="250" step="0.5" placeholder="92">
+          </div>
+          <div class="calc-field">
+            <label for="calc-height">Зріст, см</label>
+            <input id="calc-height" type="number" min="130" max="220" placeholder="172">
+          </div>
+        </div>
+        <div class="calc-out" id="calcOut" hidden>
+          <div class="calc-cell">
+            <p class="sum" id="calcStep1">—</p>
+            <p class="lbl">якщо −14,9% за 68 тижнів<br>(STEP 1, семаглутид 2,4 мг)</p>
+          </div>
+          <div class="calc-cell">
+            <p class="sum" id="calcSurmount">—</p>
+            <p class="lbl">якщо −20,9% за 72 тижні<br>(SURMOUNT-1, тирзепатид 15 мг)</p>
+          </div>
+        </div>
+        <p class="calc-fine" id="calcBmi"></p>
+        <p class="calc-fine">
+          Це середні значення досліджень, а не прогноз для конкретної людини. Результат залежить від
+          початкового стану, супутніх захворювань і того, чи призначив лікар лікування.
+        </p>
+      </div>
+
       <div class="results-note">
         <div>
           <h3>Як ми публікуємо результати</h3>
@@ -243,5 +273,41 @@
   </div>
 </footer>
 
+<script>
+(function () {
+  var w = document.getElementById('calc-weight');
+  var h = document.getElementById('calc-height');
+  var out = document.getElementById('calcOut');
+  var s1 = document.getElementById('calcStep1');
+  var sm = document.getElementById('calcSurmount');
+  var bmiEl = document.getElementById('calcBmi');
+  if (!w || !h) return;
+
+  function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+
+  function render() {
+    var weight = parseFloat(w.value);
+    var height = parseFloat(h.value);
+    if (!weight || weight < 40 || weight > 250) { out.hidden = true; bmiEl.textContent = ''; return; }
+    out.hidden = false;
+
+    var w1 = weight * (1 - 0.149);
+    var w2 = weight * (1 - 0.209);
+    s1.innerHTML = '−' + (weight - w1).toFixed(1).replace('.', ',') + ' кг<small style="display:block;font-size:.75rem;font-weight:500;color:#0A5546;opacity:.75;margin-top:4px">' + w1.toFixed(1).replace('.', ',') + ' кг</small>';
+    sm.innerHTML = '−' + (weight - w2).toFixed(1).replace('.', ',') + ' кг<small style="display:block;font-size:.75rem;font-weight:500;color:#0A5546;opacity:.75;margin-top:4px">' + w2.toFixed(1).replace('.', ',') + ' кг</small>';
+
+    if (height && height >= 130 && height <= 220) {
+      var m = height / 100;
+      var bmi = weight / (m * m);
+      bmiEl.textContent = 'Ваш ІМТ зараз: ' + bmi.toFixed(1).replace('.', ',') + '.';
+    } else {
+      bmiEl.textContent = '';
+    }
+  }
+
+  w.addEventListener('input', render);
+  h.addEventListener('input', render);
+})();
+</script>
 </body>
 </html>
