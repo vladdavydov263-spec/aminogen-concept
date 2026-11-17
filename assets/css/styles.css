@@ -765,3 +765,31 @@ section[id], .tab-panel, .docs-copy { scroll-margin-top: 92px; }
 .footer-ruo summary::after { content: "＋"; font-size: .6875rem; opacity: .7; }
 .footer-ruo details[open] summary::after { content: "−"; }
 .footer-ruo p { font-size: .75rem; line-height: 1.6; color: #7E93AE; margin-top: 10px; max-width: 90ch; }
+
+/* ---------- audience segments ---------- */
+.segment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.segment {
+  display: flex; flex-direction: column; gap: 10px;
+  border: 1px solid var(--line); border-radius: var(--radius); background: #fff;
+  padding: 26px; transition: border-color .18s var(--ease), box-shadow .18s var(--ease), transform .18s var(--ease);
+}
+.segment:hover { border-color: var(--line-strong); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+.segment .seg-tag { font-size: .6875rem; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); }
+.segment h3 { font-size: 1.25rem; letter-spacing: -.02em; }
+.segment p { font-size: .875rem; line-height: 1.6; color: var(--muted); }
+.segment ul { display: grid; gap: 6px; margin: 2px 0 6px; }
+.segment li { font-size: .8125rem; color: var(--ink-2); display: flex; gap: 8px; }
+.segment li::before { content: "·"; color: var(--blue); font-weight: 700; }
+.segment .link-arrow { margin-top: auto; }
+
+/* ---------- certification band ---------- */
+.cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.cert-card { border: 1px solid var(--line); border-radius: 14px; background: #fff; padding: 24px; }
+.cert-card .ico { color: var(--blue); margin-bottom: 14px; }
+.cert-card h3 { font-size: .9375rem; margin-bottom: 6px; }
+.cert-card p { font-size: .8125rem; line-height: 1.6; color: var(--muted); }
+.cert-card .cert-note { display: block; margin-top: 10px; font-size: .6875rem; color: var(--muted-2); line-height: 1.5; }
+
+@media (max-width: 960px) {
+  .segment-grid, .cert-grid { grid-template-columns: 1fr; }
+}
