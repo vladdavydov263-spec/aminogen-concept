@@ -275,3 +275,5 @@ body.care .dot-live { background: var(--care); box-shadow: 0 0 0 4px rgba(14,110
 .calc-cell .lbl { font-size: .75rem; color: var(--care-dark); opacity: .8; margin-top: 4px; line-height: 1.45; }
 .calc-fine { font-size: .6875rem; color: var(--muted-2); margin-top: 14px; line-height: 1.55; }
 @media (max-width: 640px) { .calc-row, .calc-out { grid-template-columns: 1fr; } }
+
+.calc-out[hidden] { display: none; }
