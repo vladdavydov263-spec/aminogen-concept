@@ -1,0 +1,10 @@
+# runtime data (medical intake + orders) — never commit
+data/
+*.log
+
+# local screenshots used only for review
+shots/
+
+# system
+.DS_Store
+node_modules/

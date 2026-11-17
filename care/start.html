@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Анкета для перевірки відповідності — AMINOGEN Care</title>
+<meta name="description" content="Коротка анкета, яку розглядає ліцензований лікар. Рецепт лише якщо це клінічно доцільно.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E6E5A'/%3E%3Cpath d='M7 21c4.8-9 13.2-9 18 0' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M16 22.5v4' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="care.css">
+</head>
+<body class="care">
+
+<header class="care-header">
+  <div class="wrap header-inner">
+    <a class="brand-care" href="index.html" aria-label="AMINOGEN Care — головна">
+      <span class="logo">
+        <svg class="logo-arc" viewBox="0 0 120 16" aria-hidden="true">
+          <path d="M4 14C17 3 103 3 116 14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-word">AMINOGEN</span>
+        <span class="logo-sub">Медичний супровід зниження ваги</span>
+      </span>
+      <span class="brand-tag">Care</span>
+    </a>
+    <div class="header-actions">
+      <a class="btn btn-ghost hide-sm" href="index.html">Назад до програми</a>
+      <a class="btn btn-primary hide-sm" href="index.html#safety">Інформація про безпеку</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap intake">
+
+    <div class="intake-top" id="intakeTop">
+      <button class="intake-back" id="intakeBack" type="button" disabled>
+        <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4"/></svg>
+        Назад
+      </button>
+      <div class="intake-progress" aria-hidden="true"><span id="intakeBar"></span></div>
+      <span class="intake-count" id="intakeCount">1 / 6</span>
+    </div>
+
+    <!-- 1 -->
+    <section class="intake-step is-active" data-step="1">
+      <h1>Яка ваша мета?</h1>
+      <p class="intake-sub">Це впливає на план, який розглядатиме лікар, але не визначає результат.</p>
+      <div class="intake-options">
+        <button class="intake-option" type="button" data-key="goal" data-value="lose">
+          <span><strong>Знизити вагу</strong><span>Зменшити масу тіла з медичною підтримкою</span></span>
+          <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
+        <button class="intake-option" type="button" data-key="goal" data-value="maintain">
+          <span><strong>Утримати вагу після зниження</strong><span>Зберегти результат, якого ви вже досягли</span></span>
+          <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
+        <button class="intake-option" type="button" data-key="goal" data-value="unsure">
+          <span><strong>Ще не знаю</strong><span>Хочу зрозуміти, чи це для мене</span></span>
+          <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="intake-step" data-step="2">
+      <h1>Кілька вимірювань.</h1>
+      <p class="intake-sub">Вашому лікарю потрібні зріст і вага, щоб оцінити, чи підходить лікування.</p>
+      <div class="intake-fields two">
+        <div class="field">
+          <label for="i-age">Вік</label>
+          <input id="i-age" name="age" type="number" min="18" max="100" inputmode="numeric" placeholder="34">
+        </div>
+        <div class="field">
+          <label for="i-height">Зріст, см</label>
+          <input id="i-height" name="height" type="number" min="120" max="230" inputmode="numeric" placeholder="172">
+        </div>
+      </div>
+      <div class="intake-fields" style="margin-top:14px">
+        <div class="field">
+          <label for="i-weight">Вага, кг</label>
+          <input id="i-weight" name="weight" type="number" min="35" max="300" step="0.1" inputmode="decimal" placeholder="86">
+        </div>
+      </div>
+      <div class="bmi-box" id="bmiBox" hidden>
+        <div><strong id="bmiValue">—</strong> <span>ІМТ</span></div>
+        <span id="bmiNote">Розраховано за вашим зростом і вагою</span>
+      </div>
+      <div class="intake-foot">
+        <button class="btn btn-primary btn-lg" type="button" data-next>Продовжити</button>
+        <p class="fine">Ми показуємо ваш ІМТ, щоб ви бачили те саме число, що й лікар.</p>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="intake-step" data-step="3">
+      <h1>Історія хвороб.</h1>
+      <p class="intake-sub">Позначте все, що стосується. Саме це лікар переглядає передусім — і саме через це деякі анкети відхиляють.</p>
+      <div class="check-list">
+        <label class="check-item"><input type="checkbox" name="cond" value="diabetes"> Цукровий діабет 2 типу або переддіабет</label>
+        <label class="check-item"><input type="checkbox" name="cond" value="thyroid"> Медулярний рак щитоподібної залози / MEN2 у вас або в родині</label>
+        <label class="check-item"><input type="checkbox" name="cond" value="pancreatitis"> Панкреатит в анамнезі</label>
+        <label class="check-item"><input type="checkbox" name="cond" value="kidney"> Хвороби нирок або печінки</label>
+        <label class="check-item"><input type="checkbox" name="cond" value="pregnancy"> Вагітність, годування груддю або планування вагітності</label>
+        <label class="check-item"><input type="checkbox" name="cond" value="eating"> Розлад харчової поведінки в анамнезі</label>
+        <label class="check-item"><input type="checkbox" name="cond" value="none"> Нічого з переліченого</label>
+      </div>
+      <div class="intake-foot">
+        <button class="btn btn-primary btn-lg" type="button" data-next>Продовжити</button>
+        <p class="fine">У демоверсії все, що ви вводите, залишається в цьому браузері.</p>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="intake-step" data-step="4">
+      <h1>Ліки та алергії.</h1>
+      <p class="intake-sub">Перелічіть усе, що ви приймаєте регулярно, зокрема добавки, і всі відомі алергії.</p>
+      <div class="intake-fields">
+        <div class="field">
+          <label for="i-meds">Ліки, які ви приймаєте зараз</label>
+          <input id="i-meds" name="meds" type="text" placeholder="напр. левотироксин 50 мкг, метформін 500 мг">
+          <p class="hint">Напишіть «немає», якщо нічого не приймаєте регулярно.</p>
+        </div>
+        <div class="field">
+          <label for="i-allergies">Алергії</label>
+          <input id="i-allergies" name="allergies" type="text" placeholder="напр. пеніцилін">
+        </div>
+      </div>
+      <div class="intake-foot">
+        <button class="btn btn-primary btn-lg" type="button" data-next>Продовжити</button>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section class="intake-step" data-step="5">
+      <h1>Як з вами зв’язатися?</h1>
+      <p class="intake-sub">Спершу анкету розглядає лікар. Ми зв’язуємося з вами лише щоб підтвердити результат.</p>
+      <div class="intake-fields two">
+        <div class="field">
+          <label for="i-first">Ім’я</label>
+          <input id="i-first" name="first" type="text" autocomplete="given-name">
+        </div>
+        <div class="field">
+          <label for="i-last">Прізвище</label>
+          <input id="i-last" name="last" type="text" autocomplete="family-name">
+        </div>
+      </div>
+      <div class="intake-fields" style="margin-top:14px">
+        <div class="field">
+          <label for="i-email">Електронна пошта</label>
+          <input id="i-email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="i-phone">Телефон</label>
+          <input id="i-phone" name="phone" type="tel" autocomplete="tel" placeholder="+48 …">
+        </div>
+        <div class="field">
+          <label for="i-country">Область</label>
+          <select id="i-country" name="country">
+            <option>Київ</option>
+            <option>Київська область</option>
+            <option>Львівська область</option>
+            <option>Одеська область</option>
+            <option>Дніпропетровська область</option>
+            <option>Харківська область</option>
+            <option>Інша область</option>
+          </select>
+        </div>
+      </div>
+      <div class="intake-foot">
+        <button class="btn btn-primary btn-lg" type="button" data-next>Продовжити</button>
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section class="intake-step" data-step="6">
+      <h1>Перш ніж надіслати анкету лікарю.</h1>
+      <p class="intake-sub">Прочитайте ці пункти. Вони визначають, чим ця програма є і чим не є.</p>
+      <div class="check-list">
+        <label class="check-item"><input type="checkbox" name="consent" value="age"> Мені 18 років або більше, і надана мною інформація точна.</label>
+        <label class="check-item"><input type="checkbox" name="consent" value="review"> Я погоджуюся, що ліцензований лікар розгляне мою медичну інформацію, щоб вирішити, чи підходить лікування.</label>
+        <label class="check-item"><input type="checkbox" name="consent" value="rx"> Я розумію, що рецепт видають лише тоді, коли лікар вважає це клінічно доцільним, і що жодного результату не гарантовано.</label>
+        <label class="check-item"><input type="checkbox" name="consent" value="data"> Я погоджуюся на обробку моїх медичних даних для цієї мети.</label>
+      </div>
+      <div class="intake-foot">
+        <button class="btn btn-primary btn-lg" type="button" data-next>Надіслати лікарю</button>
+        <p class="fine">У цій демоверсії нічого не передається — результат формується у вашому браузері.</p>
+      </div>
+    </section>
+
+    <!-- result -->
+    <section class="intake-step" data-step="7">
+      <div class="intake-result" id="intakeResult">
+        <p class="flag">
+          <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 14 4v4.4c0 3.4-2.4 5.4-6 6.6-3.6-1.2-6-3.2-6-6.6V4z"/><path d="M5.4 8.2 7.3 10l3.4-3.6"/></svg>
+          Анкету заповнено
+        </p>
+        <h2>Ваша анкета готова для лікаря.</h2>
+        <p id="resultText">
+          Ліцензований лікар розглядає ваші відповіді протягом одного робочого дня і вирішує,
+          чи підходить лікування. Оплату стягують лише якщо призначено план лікування.
+        </p>
+
+        <dl class="intake-summary" id="resultSummary"></dl>
+
+        <div class="intake-actions">
+          <button class="btn btn-primary btn-lg" type="button" id="bookBtn">Записатися на консультацію</button>
+          <button class="btn btn-ghost btn-lg" type="button" id="restartBtn">Змінити відповіді</button>
+        </div>
+        <p class="fine" style="margin-top:14px">
+          У робочому сервісі лікарю надходить повідомлення електронною поштою. На цьому кроці оплату не стягують.
+        </p>
+      </div>
+
+      <div class="intake-result" id="bookedPanel" hidden>
+        <p class="flag">
+          <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 8.4 6.6 11 12 5.4"/></svg>
+          Запит на консультацію
+        </p>
+        <h2>Номер заявки <span id="bookRef">MC-2026-0000</span></h2>
+        <p>
+          Це демонстраційний сценарій: у робочому сервісі ви б зараз отримали лист із часом, коли
+          лікар розгляне анкету, посилання на захищену медичну анкету, якщо чогось бракує, і
+          посилання на оплату — його надсилають лише після того, як лікар підтвердить, що
+          лікування клінічно доцільне.
+        </p>
+        <dl class="intake-summary">
+          <div><dt>Що буде далі</dt><dd>Розгляд лікарем · 1 робочий день</dd></div>
+          <div><dt>Якщо призначено</dt><dd>Відпуск в аптеці · 1–2 дні</dd></div>
+          <div><dt>Доставка</dt><dd>2–5 робочих днів, з відстеженням</dd></div>
+        </dl>
+        <div class="intake-actions">
+          <a class="btn btn-primary btn-lg" href="index.html">Назад до програми</a>
+          <a class="btn btn-ghost btn-lg" href="../shop/index.html">Магазин для досліджень</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom">
+    <p>© 2026 AMINOGEN Care. Лікування за рецептом — лише після консультації з ліцензованим лікарем.</p>
+    <p class="footer-meta">Концепт · демонстраційне середовище · анкети зберігаються на сервері</p>
+  </div>
+</footer>
+
+<script src="care.js"></script>
+</body>
+</html>

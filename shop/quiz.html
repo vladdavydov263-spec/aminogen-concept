@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Підібрати варіант — AMINOGEN</title>
+<meta name="description" content="Чотири запитання, шістдесят секунд: підбір дослідницького матеріалу, який звужує каталог до потрібного вам варіанта.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2310305C'/%3E%3Cpath d='M7 21c4.8-9 13.2-9 18 0' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M16 22.5v4' stroke='%23579CF5' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/shop.css">
+</head>
+<body class="shop">
+
+<header class="shop-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html" aria-label="AMINOGEN — на головну">
+      <svg class="logo-arc" viewBox="0 0 120 16" aria-hidden="true">
+        <path d="M4 14C17 3 103 3 116 14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-word">AMINOGEN</span>
+      <span class="logo-sub">Peptide &amp; Molecular Science</span>
+    </a>
+    <nav class="shop-nav" aria-label="Магазин">
+      <a href="index.html#catalog">Каталог</a>
+      <a href="quiz.html">Підбір</a>
+      <a href="index.html#how">Як це працює</a>
+      <a href="../reviews.html">Відгуки</a>
+      <a href="index.html#faq">Доставка</a>
+    </nav>
+    <button class="cart-btn" type="button" data-open-cart aria-label="Відкрити кошик">
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg>
+      Кошик
+      <span class="cart-count" data-cart-count data-empty="true">0</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap quiz-shell">
+
+    <div class="quiz-top">
+      <button class="quiz-back" id="quizBack" type="button" disabled>
+        <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4"/></svg>
+        Назад
+      </button>
+      <div class="quiz-progress" aria-hidden="true"><span id="quizBar"></span></div>
+      <span class="quiz-count" id="quizCount">1 / 4</span>
+    </div>
+
+    <!-- step 1 -->
+    <section class="quiz-step is-active" data-step="1">
+      <h1>З чим ви працюєте?</h1>
+      <p class="quiz-sub">Це лише звужує каталог. Ми не оцінюємо, чи щось підходить людині, — це лабораторні матеріали.</p>
+      <div class="quiz-options">
+        <button class="quiz-option" type="button" data-key="area" data-value="metabolic">
+          <span><strong>Дослідження метаболізму</strong><span>Агоністи рецепторів GIP / GLP-1</span></span>
+          <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
+        <button class="quiz-option" type="button" data-key="area" data-value="longevity">
+          <span><strong>Довголіття / клітинні дослідження</strong><span>Коферменти й тетрапептиди</span></span>
+          <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- step 2 -->
+    <section class="quiz-step" data-step="2">
+      <h1>Яка сполука?</h1>
+      <p class="quiz-sub">Оберіть ту, з якою працюєте, — або дозвольте нам підказати найпопулярніший варіант.</p>
+      <div class="quiz-options" id="compoundOptions"></div>
+    </section>
+
+    <!-- step 3 -->
+    <section class="quiz-step" data-step="3">
+      <h1>Який варіант?</h1>
+      <p class="quiz-sub">Кожен варіант — це 2 флакони: порошок і вода для розведення, з сертифікатом аналізу на партію.</p>
+      <div class="quiz-options" id="doseOptions"></div>
+    </section>
+
+    <!-- step 4 -->
+    <section class="quiz-step" data-step="4">
+      <h1>Скільки коробок?</h1>
+      <p class="quiz-sub">Одна коробка, невеликий запас або оптовий тариф.</p>
+      <div class="quiz-options">
+        <button class="quiz-option" type="button" data-key="qty" data-value="1">
+          <span><strong>1 коробка</strong><span>2 флакони — для одного дослідження</span></span>
+          <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
+        <button class="quiz-option" type="button" data-key="qty" data-value="5">
+          <span><strong>5 коробок</strong><span>50 флаконів — для повторних експериментів</span></span>
+          <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
+        <button class="quiz-option" type="button" data-key="qty" data-value="wholesale">
+          <span><strong>10+ коробок</strong><span>Опт або власна торгова марка — ціна за запитом</span></span>
+          <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- result -->
+    <section class="quiz-step" data-step="5">
+      <div class="quiz-result">
+        <p class="quiz-result-flag">
+          <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 14 4v4.4c0 3.4-2.4 5.4-6 6.6-3.6-1.2-6-3.2-6-6.6V4z"/><path d="M5.4 8.2 7.3 10l3.4-3.6"/></svg>
+          Ваш варіант
+        </p>
+        <h2 id="resName">—</h2>
+        <p class="micro" id="resSub">—</p>
+
+        <p class="quiz-price" id="resPrice">—</p>
+        <p class="micro" id="resPriceNote"></p>
+
+        <dl class="quiz-summary" id="resSummary"></dl>
+
+        <div class="quiz-result-actions" id="resActions"></div>
+
+        <div class="note note-warn">
+          <strong>Лише для дослідницьких цілей</strong>
+          Цей підбір лише зіставляє позицію каталогу, не більше. Це не медична оцінка, він не
+          перевіряє придатність для будь-якої людини й не надає рекомендацій щодо дозування. Усі
+          продукти постачаються для лабораторних досліджень та аналітичного використання.
+        </div>
+
+        <p style="margin-top:18px"><button class="quiz-restart" id="quizRestart" type="button">Почати спочатку</button></p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom">
+    <p>© 2026 AMINOGEN. Усі продукти — лише для лабораторних досліджень; не призначено для людей або тварин.</p>
+    <p class="footer-meta">Концепт · демонстраційні ціни</p>
+  </div>
+</footer>
+
+<div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Кошик">
+  <div class="cart-head">
+    <h2>Ваш кошик</h2>
+    <button class="cart-close" type="button" data-close-cart aria-label="Закрити кошик">×</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="cart-row"><span>Сума</span><span id="cartSubtotal">0 ₴</span></div>
+    <div class="cart-row"><span>Доставка</span><span id="cartShipping">—</span></div>
+    <div class="cart-row total"><span>Разом</span><span id="cartTotal">0 ₴</span></div>
+    <a class="btn btn-primary btn-lg" href="checkout.html" id="cartCheckout">Оформити замовлення</a>
+    <p class="cart-note">Лише для дослідницьких цілей. Оплата карткою або переказом.</p>
+  </div>
+</aside>
+
+<script src="shop.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var COMPOUNDS = {
+    metabolic: [
+      { id: 'tir', name: 'Tirzepatide', sub: 'Подвійний агоніст рецепторів GIP / GLP-1', doses: [
+        { id: 'tir-15', label: '15 мг', price: 3590 },
+        { id: 'tir-20', label: '20 мг', price: 4490 },
+        { id: 'tir-40', label: '40 мг', price: 7190 }
+      ]},
+      { id: 'ret', name: 'Retatrutide', sub: 'Потрійний агоніст рецепторів GIP / GLP-1 / глюкагону', doses: [
+        { id: 'ret-10', label: '10 мг', price: 3990 },
+        { id: 'ret-20', label: '20 мг', price: 6290 },
+        { id: 'ret-40', label: '40 мг', price: 10790 }
+      ]}
+    ],
+    longevity: [
+      { id: 'mot', name: 'Mots-C', sub: 'Мітохондріальний пептид (16 амінокислот)', doses: [
+        { id: 'mot-40', label: '40 мг', price: 5390 }
+      ]}
+    ]
+  };
+
+  function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ₴'; }
+
+  var state = { area: null, compound: null, dose: null, qty: null };
+  var step = 1;
+  var back = document.getElementById('quizBack');
+  var bar = document.getElementById('quizBar');
+  var countEl = document.getElementById('quizCount');
+
+  function show(n) {
+    step = n;
+    Array.prototype.forEach.call(document.querySelectorAll('.quiz-step'), function (s) {
+      s.classList.toggle('is-active', Number(s.getAttribute('data-step')) === n);
+    });
+    var total = 4;
+    bar.style.width = Math.min(100, (Math.min(n, 5) / (total + 1)) * 100) + '%';
+    countEl.textContent = n > 4 ? 'Результат' : n + ' / ' + total;
+    back.disabled = n === 1 || n > 4;
+    if (n <= 4) window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function compoundOptions() {
+    var host = document.getElementById('compoundOptions');
+    host.innerHTML = COMPOUNDS[state.area].map(function (c) {
+      return '<button class="quiz-option" type="button" data-key="compound" data-value="' + c.id + '">' +
+        '<span><strong>' + c.name + '</strong><span>' + c.sub + '</span></span>' +
+        '<svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>';
+    }).join('');
+  }
+
+  function doseOptions() {
+    var comp = COMPOUNDS[state.area].filter(function (c) { return c.id === state.compound; })[0];
+    var host = document.getElementById('doseOptions');
+    host.innerHTML = comp.doses.map(function (d) {
+      return '<button class="quiz-option" type="button" data-key="dose" data-value="' + d.id + '">' +
+        '<span><strong>' + comp.name + ' ' + d.label + '</strong><span>' + fmt(d.price) + ' за коробку (2 флакони)</span></span>' +
+        '<svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>';
+    }).join('');
+  }
+
+  function currentDose() {
+    var comp = COMPOUNDS[state.area].filter(function (c) { return c.id === state.compound; })[0];
+    return comp.doses.filter(function (d) { return d.id === state.dose; })[0];
+  }
+
+  function currentCompound() {
+    return COMPOUNDS[state.area].filter(function (c) { return c.id === state.compound; })[0];
+  }
+
+  function result() {
+    var comp = currentCompound();
+    var dose = currentDose();
+    var qty = state.qty;
+    var units = qty === 'wholesale' ? 10 : Number(qty);
+    var total = dose.price * units;
+
+    document.getElementById('resName').textContent = comp.name + ' ' + dose.label;
+    document.getElementById('resSub').textContent = comp.sub + ' · 2 флакони у коробці: порошок і вода';
+
+    var priceEl = document.getElementById('resPrice');
+    var noteEl = document.getElementById('resPriceNote');
+
+    if (qty === 'wholesale') {
+      priceEl.textContent = 'Ціна за запитом';
+      noteEl.textContent = 'Від 10 коробок — оптові рівні, власна торгова марка та розподіл партій підтверджуються для кожного замовлення.';
+    } else {
+      priceEl.innerHTML = fmt(total) + '<small>' + units + ' × 2 флакони · ' + fmt(dose.price) + ' за коробку</small>';
+      noteEl.textContent = total >= 5000 ? 'Для цього замовлення діє безкоштовна доставка.' : 'Доставка 200 ₴ — безкоштовно від 5 000 ₴.';
+    }
+
+    document.getElementById('resSummary').innerHTML =
+      '<div><dt>Напрям досліджень</dt><dd>' + (state.area === 'metabolic' ? 'Метаболізм' : 'Довголіття') + '</dd></div>' +
+      '<div><dt>Сполука</dt><dd>' + comp.name + '</dd></div>' +
+      '<div><dt>Варіант</dt><dd>' + dose.label + ' · 2 флакони</dd></div>' +
+      '<div><dt>Кількість</dt><dd>' + (qty === 'wholesale' ? '10+ коробок' : units + (units === 1 ? ' коробка' : ' коробок')) + '</dd></div>';
+
+    var actions = document.getElementById('resActions');
+    if (qty === 'wholesale') {
+      actions.innerHTML =
+        '<a class="btn btn-primary btn-lg" href="../index.html#request">Запросити пропозицію</a>' +
+        '<a class="btn btn-ghost btn-lg" href="index.html#catalog">Назад до каталогу</a>';
+    } else {
+      actions.innerHTML =
+        '<a class="btn btn-primary btn-lg" href="index.html?cart=' + dose.id + ':' + units + '">Додати в кошик</a>' +
+        '<a class="btn btn-ghost btn-lg" href="index.html#catalog">Переглянути всі девʼять</a>';
+    }
+  }
+
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.quiz-option');
+    if (!btn) return;
+    var key = btn.getAttribute('data-key');
+    var value = btn.getAttribute('data-value');
+    state[key] = value;
+
+    Array.prototype.forEach.call(btn.parentNode.children, function (b) { b.classList.remove('is-picked'); });
+    btn.classList.add('is-picked');
+
+    if (key === 'area') { state.compound = null; state.dose = null; compoundOptions(); show(2); }
+    else if (key === 'compound') { state.dose = null; doseOptions(); show(3); }
+    else if (key === 'dose') { show(4); }
+    else if (key === 'qty') { result(); show(5); }
+  });
+
+  back.addEventListener('click', function () {
+    if (step > 1 && step <= 4) show(step - 1);
+  });
+
+  document.getElementById('quizRestart').addEventListener('click', function () {
+    state = { area: null, compound: null, dose: null, qty: null };
+    Array.prototype.forEach.call(document.querySelectorAll('.quiz-option'), function (b) { b.classList.remove('is-picked'); });
+    show(1);
+  });
+
+  show(1);
+})();
+</script>
+</body>
+</html>
