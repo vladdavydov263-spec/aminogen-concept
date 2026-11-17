@@ -16,7 +16,12 @@
   .demo-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--line); }
   .demo-slot { position: relative; aspect-ratio: 3 / 4; background: var(--mist); overflow: hidden; display: grid; place-items: center; }
   .demo-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .demo-slot .empty { font-size: .75rem; color: var(--muted); text-align: center; padding: 16px; line-height: 1.5; }
+  .demo-slot .empty {
+    position: relative; z-index: 2; font-size: .75rem; color: var(--muted); text-align: center;
+    padding: 10px 12px; line-height: 1.5; background: rgba(255,255,255,.92);
+    border: 1px solid var(--line); border-radius: 8px; max-width: 88%;
+  }
+  .demo-slot .empty code { font-size: .6875rem; }
   .demo-slot .tag {
     position: absolute; left: 10px; top: 10px; background: rgba(10,26,47,.78); color: #fff;
     font-size: .625rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
@@ -24,8 +29,8 @@
   }
   .watermark {
     position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none;
-    color: rgba(255,255,255,.85); font-size: 2.5rem; font-weight: 800; letter-spacing: .08em;
-    text-shadow: 0 2px 18px rgba(0,0,0,.45); transform: rotate(-18deg);
+    color: rgba(10,26,47,.38); font-size: 1.5rem; font-weight: 800; letter-spacing: .14em;
+    transform: rotate(-16deg);
   }
   .demo-note { max-width: 520px; margin: 0 auto 60px; font-size: .8125rem; color: var(--muted); line-height: 1.6; }
 </style>
