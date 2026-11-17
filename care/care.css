@@ -219,7 +219,7 @@ body.care .dot-live { background: var(--care); box-shadow: 0 0 0 4px rgba(14,110
   border-radius: 10px;
 }
 .ba-slot span { position: relative; font-size: .6875rem; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; color: var(--care); opacity: .75; }
-.ba-slot svg { position: relative; width: 34px; height: 46px; color: var(--care); opacity: .35; margin-bottom: 8px; }
+.ba-slot svg { position: relative; width: 52px; height: 96px; color: var(--care); opacity: .32; margin-bottom: 10px; }
 .ba-slot small { position: relative; display: block; font-size: .625rem; color: var(--muted-2); margin-top: 4px; letter-spacing: 0; text-transform: none; font-weight: 500; }
 .ba-body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .ba-name { font-size: .9375rem; font-weight: 600; }
