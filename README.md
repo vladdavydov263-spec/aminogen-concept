@@ -163,3 +163,15 @@ only*, публикация результатов «похудела на N к�
   Зараз це демо-картки з поміткою «Демо-картка».
 - `care/RESULTS-CHECKLIST.md` — що потрібно на кожен реальний кейс: фото, згода, цифри.
 - Фото складати в `care/assets/results/<id>/before.jpg` і `after.jpg`.
+
+## Деплой
+
+**GitHub Pages (статика):** https://vladdavydov263-spec.github.io/aminogen-concept/
+Репозиторий: https://github.com/vladdavydov263-spec/aminogen-concept
+
+На Pages работают все страницы, но нет Node-сервера: `POST /api/order` и `POST /api/intake`
+вернут 404, и интерфейс сам перейдёт в демо-режим (покажет экран успеха с пометкой, что данные
+не сохранились). Для полноценной работы форм нужен хостинг с Node — Render, Railway, Fly.io
+или VPS: там запускается `node server.js` и подключается домен.
+
+Запуск локально: `node server.js` → http://127.0.0.1:8765
