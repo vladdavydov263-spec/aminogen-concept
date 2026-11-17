@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ДЕМО · картка результату з фото — AMINOGEN Care</title>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="care.css">
+<style>
+  .demo-banner {
+    background: #B42318; color: #fff; text-align: center;
+    padding: 10px 16px; font-size: .8125rem; font-weight: 600; letter-spacing: .02em;
+  }
+  .demo-card { max-width: 520px; margin: 40px auto; }
+  .demo-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--line); }
+  .demo-slot { position: relative; aspect-ratio: 3 / 4; background: var(--mist); overflow: hidden; display: grid; place-items: center; }
+  .demo-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .demo-slot .empty { font-size: .75rem; color: var(--muted); text-align: center; padding: 16px; line-height: 1.5; }
+  .demo-slot .tag {
+    position: absolute; left: 10px; top: 10px; background: rgba(10,26,47,.78); color: #fff;
+    font-size: .625rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    padding: 5px 8px; border-radius: 4px;
+  }
+  .watermark {
+    position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none;
+    color: rgba(255,255,255,.85); font-size: 2.5rem; font-weight: 800; letter-spacing: .08em;
+    text-shadow: 0 2px 18px rgba(0,0,0,.45); transform: rotate(-18deg);
+  }
+  .demo-note { max-width: 520px; margin: 0 auto 60px; font-size: .8125rem; color: var(--muted); line-height: 1.6; }
+</style>
+</head>
+<body class="care">
+
+<div class="demo-banner">ДЕМО-РЕЖИМ · фото лише локально · не публікується · не індексується</div>
+
+<main>
+  <div class="demo-card">
+    <article class="ba-card">
+      <div class="demo-photos">
+        <div class="demo-slot">
+          <img src="assets/results/demo/before.jpg" alt="" onerror="this.remove()">
+          <div class="empty" id="emptyBefore">Файл не знайдено:<br><code>care/assets/results/demo/before.jpg</code></div>
+          <span class="tag">До</span>
+          <span class="watermark">ДЕМО</span>
+        </div>
+        <div class="demo-slot">
+          <img src="assets/results/demo/after.jpg" alt="" onerror="this.remove()">
+          <div class="empty" id="emptyAfter">Файл не знайдено:<br><code>care/assets/results/demo/after.jpg</code></div>
+          <span class="tag">Після</span>
+          <span class="watermark">ДЕМО</span>
+        </div>
+      </div>
+      <div class="ba-body">
+        <p class="ba-name">Олена, 34 · Київ</p>
+        <p class="ba-meta">Супровід 4 місяці · препарат призначив лікар після консультації</p>
+        <p class="ba-delta">−12 кг <span>за 4 місяці</span></p>
+        <p class="ba-quote">«Найбільше змінилося не число на вагах, а те, що я перестала думати про їжу весь день».</p>
+        <div class="ba-tags">
+          <span class="ba-tag is-demo">Демо</span>
+          <span class="ba-tag">Не для публікації</span>
+        </div>
+      </div>
+    </article>
+  </div>
+  <p class="demo-note">
+    Поклади будь-які два кадри у <code>care/assets/results/demo/before.jpg</code> і
+    <code>after.jpg</code> і перезавантаж сторінку. Ця папка додана в <code>.gitignore</code>:
+    файли не потрапляють у репозиторій і на публічну версію сайту. На GitHub Pages ця сторінка
+    відкриється без фото — так і задумано.
+  </p>
+</main>
+
+</body>
+</html>

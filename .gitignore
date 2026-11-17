@@ -5,6 +5,9 @@ data/
 # local screenshots used only for review
 shots/
 
+# demo photos: local only, never committed
+care/assets/results/demo/
+
 # system
 .DS_Store
 node_modules/
