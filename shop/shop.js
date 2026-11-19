@@ -12,6 +12,53 @@
     'mot-40': { name: 'Mots-C', dose: '40 mg', price: 5390, img: '../assets/img/box-front.jpg', cat: 'longevity' }
   };
 
+  /* ---------------- locale strings (cart UI) ---------------- */
+  var LANG = (document.documentElement.lang || 'uk').slice(0, 2);
+  var T = {
+    uk: {
+      empty: 'Ваш кошик порожній.<br>Оберіть варіант у каталозі, щоб почати замовлення.',
+      emptyShort: 'Ваш кошик порожній.',
+      meta: '10 × 3 мл · COA на партію',
+      dec: 'Зменшити кількість', inc: 'Збільшити кількість', remove: 'Видалити',
+      free: 'Безкоштовно', emptyCart: 'Кошик порожній',
+      placing: 'Оформлюємо…', place: 'Підтвердити замовлення',
+      itemForms: [' позиція', ' позиції', ' позицій']
+    },
+    en: {
+      empty: 'Your cart is empty.<br>Choose an option in the catalogue to start an order.',
+      emptyShort: 'Your cart is empty.',
+      meta: '10 × 3 ml · COA per lot',
+      dec: 'Decrease quantity', inc: 'Increase quantity', remove: 'Remove',
+      free: 'Free', emptyCart: 'Cart is empty',
+      placing: 'Placing order…', place: 'Place order',
+      itemForms: [' item', ' items', ' items']
+    },
+    de: {
+      empty: 'Ihr Warenkorb ist leer.<br>Wählen Sie eine Option im Katalog, um zu bestellen.',
+      emptyShort: 'Ihr Warenkorb ist leer.',
+      meta: '10 × 3 ml · COA pro Charge',
+      dec: 'Menge verringern', inc: 'Menge erhöhen', remove: 'Entfernen',
+      free: 'Kostenlos', emptyCart: 'Warenkorb ist leer',
+      placing: 'Bestellung wird aufgegeben…', place: 'Bestellung aufgeben',
+      itemForms: [' Position', ' Positionen', ' Positionen']
+    },
+    es: {
+      empty: 'Su carrito está vacío.<br>Elija una opción en el catálogo para empezar el pedido.',
+      emptyShort: 'Su carrito está vacío.',
+      meta: '10 × 3 ml · COA por lote',
+      dec: 'Reducir cantidad', inc: 'Aumentar cantidad', remove: 'Eliminar',
+      free: 'Gratis', emptyCart: 'El carrito está vacío',
+      placing: 'Procesando el pedido…', place: 'Confirmar pedido',
+      itemForms: [' artículo', ' artículos', ' artículos']
+    }
+  }[LANG] || null;
+  if (!T) {
+    T = { empty: 'Ваш кошик порожній.', emptyShort: 'Ваш кошик порожній.', meta: '10 × 3 мл · COA на партію',
+          dec: 'Зменшити кількість', inc: 'Збільшити кількість', remove: 'Видалити', free: 'Безкоштовно',
+          emptyCart: 'Кошик порожній', placing: 'Оформлюємо…', place: 'Підтвердити замовлення',
+          itemForms: [' позиція', ' позиції', ' позицій'] };
+  }
+
   var FREE_SHIPPING = 5000;
   var SHIPPING = 200;
   var KEY = 'aminogen_cart_v1';
@@ -83,7 +130,7 @@
     var ids = Object.keys(cart);
 
     if (!ids.length) {
-      list.innerHTML = '<p class="cart-empty">Ваш кошик порожній.<br>Оберіть варіант у каталозі, щоб почати замовлення.</p>';
+      list.innerHTML = '<p class="cart-empty">' + T.empty + '</p>';
     } else {
       list.innerHTML = ids.map(function (id) {
         var p = PRODUCTS[id];
@@ -93,16 +140,16 @@
             '<div class="ci-thumb">' + p.dose + '</div>' +
             '<div>' +
               '<div class="ci-name">' + p.name + ' ' + p.dose + '</div>' +
-              '<div class="ci-meta">10 × 3 мл · COA на партію</div>' +
+              '<div class="ci-meta">' + T.meta + '</div>' +
               '<div class="ci-qty">' +
-                '<button type="button" data-dec="' + id + '" aria-label="Зменшити кількість">−</button>' +
+                '<button type="button" data-dec="' + id + '" aria-label="' + T.dec + '">−</button>' +
                 '<span>' + cart[id] + '</span>' +
-                '<button type="button" data-inc="' + id + '" aria-label="Збільшити кількість">+</button>' +
+                '<button type="button" data-inc="' + id + '" aria-label="' + T.inc + '">+</button>' +
               '</div>' +
             '</div>' +
             '<div class="ci-right">' +
               '<div class="ci-price">' + money(p.price * cart[id]) + '</div>' +
-              '<button type="button" class="ci-remove" data-remove="' + id + '">Видалити</button>' +
+              '<button type="button" class="ci-remove" data-remove="' + id + '">' + T.remove + '</button>' +
             '</div>' +
           '</div>';
       }).join('');
@@ -114,7 +161,7 @@
     var shipEl = document.getElementById('cartShipping');
     var totEl = document.getElementById('cartTotal');
     if (subEl) subEl.textContent = money(sub);
-    if (shipEl) shipEl.textContent = ship === 0 ? (sub === 0 ? '—' : 'Безкоштовно') : money(ship);
+    if (shipEl) shipEl.textContent = ship === 0 ? (sub === 0 ? '—' : T.free) : money(ship);
     if (totEl) totEl.textContent = money(sub + ship);
 
     var co = document.getElementById('cartCheckout');
@@ -129,7 +176,7 @@
     if (!host) return;
     var ids = Object.keys(cart);
     if (!ids.length) {
-      host.innerHTML = '<p class="cart-empty">Ваш кошик порожній.</p>';
+      host.innerHTML = '<p class="cart-empty">' + T.emptyShort + '</p>';
     } else {
       host.innerHTML = ids.map(function (id) {
         var p = PRODUCTS[id];
@@ -140,9 +187,9 @@
     var ship = shippingFee();
     var el = function (id, v) { var n = document.getElementById(id); if (n) n.textContent = v; };
     el('sumSubtotal', money(sub));
-    el('sumShipping', ship === 0 ? (sub === 0 ? '—' : 'Безкоштовно') : money(ship));
+    el('sumShipping', ship === 0 ? (sub === 0 ? '—' : T.free) : money(ship));
     el('sumTotal', money(sub + ship));
-    el('sumCount', count() + plural(count(), [' позиція', ' позиції', ' позицій']));
+    el('sumCount', count() + plural(count(), T.itemForms));
   }
 
   /* ---------------- drawer ---------------- */
@@ -229,7 +276,7 @@
   if (form) {
     var submitBtn = document.querySelector('button[form="checkoutForm"]') || form.querySelector('button[type="submit"]');
     if (count() === 0) {
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Кошик порожній'; }
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = T.emptyCart; }
       var emptyNote = document.getElementById('checkoutEmpty');
       if (emptyNote) emptyNote.style.display = 'block';
     }
@@ -254,7 +301,7 @@
         }
       };
 
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Оформлюємо…'; }
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = T.placing; }
 
       fetch('/api/order', {
         method: 'POST',
@@ -289,7 +336,7 @@
       cart = {};
       save();
       renderCount();
-      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Підтвердити замовлення'; }
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = T.place; }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }

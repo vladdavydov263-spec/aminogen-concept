@@ -808,3 +808,13 @@ section[id], .tab-panel, .docs-copy { scroll-margin-top: 92px; }
 @media (max-width: 640px) {
   .care-section { padding: 36px 0; }
 }
+
+/* ---------- language switcher ---------- */
+.lang-switch { display: inline-flex; align-items: center; gap: 2px; border: 1px solid var(--line-strong); border-radius: 8px; padding: 2px; background: #fff; }
+.lang-switch a {
+  font-size: .75rem; font-weight: 600; letter-spacing: .04em; color: var(--muted);
+  padding: 5px 8px; border-radius: 6px; text-decoration: none; transition: background .15s var(--ease), color .15s var(--ease);
+}
+.lang-switch a:hover { color: var(--ink); background: var(--mist); }
+.lang-switch a.is-active { background: var(--ink); color: #fff; }
+@media (max-width: 960px) { .lang-switch a { padding: 5px 6px; font-size: .6875rem; } }
