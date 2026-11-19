@@ -175,3 +175,22 @@ only*, публикация результатов «похудела на N к�
 или VPS: там запускается `node server.js` и подключается домен.
 
 Запуск локально: `node server.js` → http://127.0.0.1:8765
+
+## Мини-CRM
+
+Встроена в `server.js`, отдельной базы не требует.
+
+- Вход: `http://127.0.0.1:8765/crm?token=<CRM_TOKEN>` (токен печатается при старте, либо задаётся `CRM_TOKEN=...`).
+- Показывает анкеты программы и заказы магазина: клиент, область, BMI/состав заказа, сумма, статус (`new → reviewing → approved → declined → shipped → done`), заметка.
+- Статусы и заметки хранятся в `data/status.json` (не в git).
+- **Експорт CSV:** `/crm/export?token=...` — открывается в Excel/Sheets.
+- **Уведомления:** если заданы `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID`, каждая новая анкета/заказ приходит в Telegram. Если задан `CRM_WEBHOOK_URL` — событие уходит POST-ом в любую внешнюю CRM (KeyCRM, Kommo, HubSpot, Make/n8n).
+
+```bash
+CRM_TOKEN=мой-токен \
+TELEGRAM_BOT_TOKEN=123456:AA... \
+TELEGRAM_CHAT_ID=-100123456789 \
+node server.js
+```
+
+Важно: CRM живёт только на Node-сервере. На GitHub Pages (статика) её нет — там формы работают в демо-режиме.
