@@ -793,3 +793,18 @@ section[id], .tab-panel, .docs-copy { scroll-margin-top: 92px; }
 @media (max-width: 960px) {
   .segment-grid, .cert-grid { grid-template-columns: 1fr; }
 }
+
+/* ---------- shared section shell (used by B2B page and programme) ---------- */
+.care-section { padding: 64px 0; }
+.care-section.alt { background: var(--mist); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.care-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 32px; flex-wrap: wrap; }
+.care-head h2 { font-size: clamp(1.6rem, 2.7vw, 2.25rem); letter-spacing: -.03em; margin-bottom: 0; }
+.care-head p { font-size: .9375rem; color: var(--muted); max-width: 46ch; }
+
+@media (max-width: 960px) {
+  .care-section { padding: 44px 0; }
+  .care-head { flex-direction: column; align-items: flex-start; gap: 14px; }
+}
+@media (max-width: 640px) {
+  .care-section { padding: 36px 0; }
+}
