@@ -9,7 +9,8 @@
     'ret-10': { name: 'Retatrutide', dose: '10 mg', price: 3990, img: '../assets/img/box-front.jpg', cat: 'metabolic' },
     'ret-20': { name: 'Retatrutide', dose: '20 mg', price: 6290, img: '../assets/img/box-front.jpg', cat: 'metabolic' },
     'ret-40': { name: 'Retatrutide', dose: '40 mg', price: 10790, img: '../assets/img/box-front.jpg', cat: 'metabolic' },
-    'mot-40': { name: 'Mots-C', dose: '40 mg', price: 5390, img: '../assets/img/box-front.jpg', cat: 'longevity' }
+    'mot-40': { name: 'Mots-C', dose: '40 mg', price: 5390, img: '../assets/img/box-front.jpg', cat: 'longevity' },
+    'bac-10': { name: 'Бактеріостатична вода', dose: '2.5 мл × 10', price: 690, img: '../assets/img/box-back.jpg', cat: 'accessory' }
   };
 
   /* ---------------- locale strings (cart UI) ---------------- */

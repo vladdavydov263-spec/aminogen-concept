@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Відстежити замовлення — AMINOGEN</title>
+<meta name="description" content="Введіть номер замовлення та email — покажемо статус, склад і дату відправлення.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2310305C'/%3E%3Cpath d='M7 21c4.8-9 13.2-9 18 0' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M16 22.5v4' stroke='%23579CF5' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="logo" href="index.html" aria-label="AMINOGEN — на головну">
+      <svg class="logo-arc" viewBox="0 0 120 16" aria-hidden="true">
+        <path d="M4 14C17 3 103 3 116 14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-word">AMINOGEN</span>
+      <span class="logo-sub">Peptide &amp; Molecular Science</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Головна навігація">
+      <a href="index.html#catalog">Каталог</a>
+      <a href="pro.html">Для лікарів</a>
+      <a href="fakes.html">Підробки</a>
+      <a href="about.html">Про нас</a>
+      <div class="nav-actions">
+        <a class="btn btn-ghost" href="shop/index.html">Магазин</a>
+        <a class="btn btn-primary" href="index.html#request">Запросити прайс</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-ghost hide-sm" href="shop/index.html">Магазин</a>
+      <a class="btn btn-primary hide-sm" href="index.html#request">Запросити прайс</a>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap" style="max-width:640px;padding:56px 28px 90px">
+    <p class="eyebrow">Замовлення</p>
+    <h1 style="font-size:clamp(1.8rem,3.4vw,2.6rem);letter-spacing:-.03em;margin-bottom:12px">Відстежити замовлення</h1>
+    <p class="lede" style="margin-bottom:26px">
+      Введіть номер замовлення (він є в листі підтвердження) та email, на який його оформлено.
+    </p>
+
+    <form id="trackForm" style="display:grid;gap:14px">
+      <div class="form-row">
+        <label for="t-ref">Номер замовлення</label>
+        <input id="t-ref" name="ref" type="text" placeholder="ORD-2026-1234" style="height:46px;border:1px solid var(--line-strong);border-radius:8px;padding:0 12px;font:inherit">
+      </div>
+      <div class="form-row">
+        <label for="t-email">Email</label>
+        <input id="t-email" name="email" type="email" placeholder="you@example.com" style="height:46px;border:1px solid var(--line-strong);border-radius:8px;padding:0 12px;font:inherit">
+      </div>
+      <button class="btn btn-primary btn-lg" type="submit" style="justify-self:start">Показати статус</button>
+    </form>
+
+    <div id="trackResult" style="margin-top:24px"></div>
+
+    <p class="fine" style="margin-top:26px">
+      Якщо номер не знаходиться — напишіть нам, вкажіть email і дату замовлення, ми знайдемо вручну.
+    </p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom">
+    <p>© 2026 AMINOGEN. Усі продукти — лише для лабораторних досліджень; не призначено для людей або тварин.</p>
+    <p class="footer-meta">Концепт · демонстраційні ціни</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('trackForm');
+  var out = document.getElementById('trackResult');
+
+  var LABELS = {
+    new: 'Отримано', reviewing: 'Перевіряємо', approved: 'Підтверджено',
+    shipped: 'Відправлено', done: 'Виконано', declined: 'Скасовано'
+  };
+
+  function esc(v) {
+    return String(v == null ? '' : v).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  /* prefill from ?ref=...&email=... (used in the order confirmation email) */
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('ref')) document.getElementById('t-ref').value = params.get('ref');
+  if (params.get('email')) document.getElementById('t-email').value = params.get('email');
+  if (params.get('ref') && params.get('email')) {
+    window.setTimeout(function () { form.dispatchEvent(new Event('submit')); }, 150);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ref = document.getElementById('t-ref').value.trim();
+    var email = document.getElementById('t-email').value.trim();
+    if (!ref || !email) { out.innerHTML = '<p class="fine" style="color:#B42318">Заповніть обидва поля.</p>'; return; }
+
+    out.innerHTML = '<p class="fine">Шукаємо…</p>';
+
+    fetch('/api/track?ref=' + encodeURIComponent(ref) + '&email=' + encodeURIComponent(email))
+      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+      .then(function (res) {
+        if (!res.ok) throw new Error('not_found');
+        var d = res.data;
+        var items = d.items.map(function (i) { return esc(i.name) + ' ' + esc(i.dose) + ' × ' + i.qty; }).join('<br>');
+        out.innerHTML =
+          '<div class="note">' +
+            '<strong>Замовлення ' + esc(d.ref) + '</strong>' +
+            '<p style="margin:8px 0 0">Статус: <b>' + (LABELS[d.status] || d.status) + '</b><br>' +
+            'Оформлено: ' + esc(d.createdAt.slice(0, 10)) + '<br>' +
+            'Сума: ' + d.total + ' ₴<br>' + items + '</p>' +
+          '</div>';
+      })
+      .catch(function () {
+        out.innerHTML = '<div class="note note-warn"><strong>Не знайшли</strong>' +
+          'Перевірте номер і email. Якщо замовлення оформлювали на іншу адресу — напишіть нам, знайдемо вручну.</div>';
+      });
+  });
+})();
+</script>
+</body>
+</html>

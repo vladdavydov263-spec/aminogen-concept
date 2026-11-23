@@ -45,7 +45,8 @@ const PRODUCTS = {
   'ret-10': { name: 'Retatrutide', dose: '10 mg', price: 3990 },
   'ret-20': { name: 'Retatrutide', dose: '20 mg', price: 6290 },
   'ret-40': { name: 'Retatrutide', dose: '40 mg', price: 10790 },
-  'mot-40': { name: 'Mots-C', dose: '40 mg', price: 5390 }
+  'mot-40': { name: 'Mots-C', dose: '40 mg', price: 5390 },
+  'bac-10': { name: 'Бактеріостатична вода', dose: '2.5 мл × 10', price: 690 }
 };
 const FREE_SHIPPING = 5000;
 const SHIPPING = 200;
@@ -376,6 +377,28 @@ async function handleApi(req, res, url) {
     console.log(`[order] ${record.ref} ${lines.length} line(s) total=${total} UAH`);
     notify(record, 'order');
     return json(res, 201, { ok: true, ref: record.ref, subtotal, shipping, total });
+  }
+
+  if (req.method === 'GET' && url.pathname === '/api/track') {
+    const ref = s(url.searchParams.get('ref')).toUpperCase();
+    const email = s(url.searchParams.get('email')).toLowerCase();
+    if (!ref || !email) return json(res, 422, { ok: false, error: 'ref_and_email_required' });
+
+    const orders = await readJsonl(ORDERS_FILE);
+    const order = orders.find((o) => o.ref.toUpperCase() === ref && String(o.customer.email).toLowerCase() === email);
+    if (!order) return json(res, 404, { ok: false, error: 'not_found' });
+
+    const statuses = await readStatuses();
+    const st = (statuses[order.ref] || {});
+    return json(res, 200, {
+      ok: true,
+      ref: order.ref,
+      createdAt: order.createdAt,
+      status: st.status || 'new',
+      total: order.total,
+      items: order.items.map((i) => ({ name: i.name, dose: i.dose, qty: i.qty })),
+      payment: order.payment
+    });
   }
 
   if (req.method === 'POST' && url.pathname === '/api/crm/status') {
