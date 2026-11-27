@@ -166,8 +166,20 @@ only*, публикация результатов «похудела на N к�
 
 ## Деплой
 
-**GitHub Pages (статика):** https://vladdavydov263-spec.github.io/aminogen-concept/
+**Домен:** https://aminogen.health (и https://www.aminogen.health)
+**GitHub Pages (статика):** https://aminogen.health/ · старое зеркало: https://vladdavydov263-spec.github.io/aminogen-concept/
 Репозиторий: https://github.com/vladdavydov263-spec/aminogen-concept
+
+Домен привязан через файл `CNAME` (`aminogen.health`) и настройку Pages → Custom domain.
+DNS у регистратора (Namecheap, Advanced DNS):
+
+| Type | Host | Value |
+|---|---|---|
+| A | @ | 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153 |
+| CNAME | www | vladdavydov263-spec.github.io |
+
+HTTPS-сертификат GitHub выпускает сам после того, как DNS начнёт отдавать эти записи
+(обычно 15–60 минут, иногда до 24 часов).
 
 На Pages работают все страницы, но нет Node-сервера: `POST /api/order` и `POST /api/intake`
 вернут 404, и интерфейс сам перейдёт в демо-режим (покажет экран успеха с пометкой, что данные
